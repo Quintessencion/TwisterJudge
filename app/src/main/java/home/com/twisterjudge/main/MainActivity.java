@@ -78,7 +78,7 @@ public class MainActivity extends MvpAppCompatActivity implements MainView,
     @Override
     protected void onResume() {
         super.onResume();
-        adView.loadAd(new AdRequest.Builder().build());
+        adView.loadAd(new AdRequest.Builder().addTestDevice("1C0FDF73ED17134A1DD86BB6793131FE").build());
     }
 
     @OnClick(R.id.image_start_stop)
