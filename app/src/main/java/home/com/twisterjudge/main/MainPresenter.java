@@ -33,8 +33,10 @@ public class MainPresenter extends MvpPresenter<MainView> {
     }
 
     public void stopGame() {
-        disposable.dispose();
-        disposable = null;
+        if (disposable != null) {
+            disposable.dispose();
+            disposable = null;
+        }
     }
 
     public void setDelay(int delay) {
@@ -48,6 +50,8 @@ public class MainPresenter extends MvpPresenter<MainView> {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        disposable.dispose();
+        if (disposable != null) {
+            disposable.dispose();
+        }
     }
 }

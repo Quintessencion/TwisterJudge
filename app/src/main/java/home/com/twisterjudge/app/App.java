@@ -2,6 +2,10 @@ package home.com.twisterjudge.app;
 
 import android.app.Application;
 
+import com.google.android.gms.ads.MobileAds;
+
+import home.com.twisterjudge.R;
+
 public class App extends Application {
 
     private static AppComponent component;
@@ -11,6 +15,8 @@ public class App extends Application {
         super.onCreate();
 
         component = buildComponent();
+
+        MobileAds.initialize(this, getString(R.string.ad_app_id));
     }
 
     protected AppComponent buildComponent() {

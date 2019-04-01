@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -31,12 +33,19 @@ public class MainActivity extends MvpAppCompatActivity implements MainView,
         TextToSpeech.OnInitListener,
         AdapterView.OnItemSelectedListener {
 
-    @Inject Repository repository;
-    @InjectPresenter MainPresenter presenter;
+    @Inject
+    Repository repository;
+    @InjectPresenter
+    MainPresenter presenter;
 
-    @BindView(R.id.main_image) ImageView imageView;
-    @BindView(R.id.seconds_spinner) Spinner secondsSpinner;
-    @BindView(R.id.image_start_stop) ImageButton button;
+    @BindView(R.id.main_image)
+    ImageView imageView;
+    @BindView(R.id.seconds_spinner)
+    Spinner secondsSpinner;
+    @BindView(R.id.image_start_stop)
+    ImageButton button;
+    @BindView(R.id.ad_view)
+    AdView adView;
 
     private TextToSpeech TTL;
     private HashMap<String, String> map;
@@ -64,6 +73,12 @@ public class MainActivity extends MvpAppCompatActivity implements MainView,
         if (actionBar != null) {
             actionBar.setTitle(R.string.app_name);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adView.loadAd(new AdRequest.Builder().build());
     }
 
     @OnClick(R.id.image_start_stop)
@@ -105,5 +120,12 @@ public class MainActivity extends MvpAppCompatActivity implements MainView,
         } else {
             Toast.makeText(this, "Speech init error", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        adView.destroy();
+        TTL.shutdown();
     }
 }

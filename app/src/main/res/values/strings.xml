@@ -1,4 +1,12 @@
 <resources>
+    <!--real app id-->
+    <string name="ad_app_id">ca-app-pub-3408007300470234~5276956533</string>
+    <string name="ad_unit_id">ca-app-pub-3408007300470234/3277000225</string>
+
+    <!--test app id-->
+    <!--<string name="ad_app_id">ca-app-pub-3940256099942544~3347511713</string>-->
+    <!--<string name="ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
+
     <string name="app_name">Твистер судья</string>
     <string name="start_game">Игра началась</string>
     <string name="end_game">Стоп игра</string>
