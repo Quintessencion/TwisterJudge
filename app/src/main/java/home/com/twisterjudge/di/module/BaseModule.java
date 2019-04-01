@@ -2,7 +2,6 @@ package home.com.twisterjudge.app;
 
 import android.content.Context;
 
-import javax.annotation.Nonnull;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -14,7 +13,7 @@ public class BaseModule {
 
     private Context context;
 
-    BaseModule(@Nonnull Context context) {
+    BaseModule(Context context) {
         this.context = context;
     }
 
@@ -25,9 +24,8 @@ public class BaseModule {
     }
 
     @Provides
-    @Nonnull
     @Singleton
-    Repository providesSharedPreferences(Context context) {
+    Repository providesRepository(Context context) {
         return new Repository(context);
     }
 }

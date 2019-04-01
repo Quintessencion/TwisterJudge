@@ -3,7 +3,7 @@ package home.com.twisterjudge.app;
 import javax.inject.Singleton;
 
 import dagger.Component;
-import home.com.twisterjudge.main.MainActivity;
+import home.com.twisterjudge.ui.MainActivity;
 
 @Singleton
 @Component(modules = BaseModule.class)
